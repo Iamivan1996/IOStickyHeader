@@ -31,8 +31,10 @@ open class IOStickyHeaderFlowLayout: UICollectionViewFlowLayout {
   open override func initialLayoutAttributesForAppearingSupplementaryElement(ofKind elementKind: String, at elementIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
     let attributes = super.initialLayoutAttributesForAppearingSupplementaryElement(ofKind: elementKind, at: elementIndexPath)
     var frame = attributes?.frame
-    frame!.origin.y += (self.parallaxHeaderReferenceSize?.height)!
-    attributes?.frame = frame!
+     if frame != nil {
+        frame!.origin.y += (self.parallaxHeaderReferenceSize?.height)!
+        attributes?.frame = frame!
+    }
     
     return attributes
   }
